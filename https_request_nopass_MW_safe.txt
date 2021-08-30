@@ -1,0 +1,91 @@
+# Query GEGD with Web Mapping Services https request
+
+import requests
+import pandas as pd
+
+# Account authorization (all as strings)
+connect_id = "CONNECT_ID" # Enter connect_id here retrieved from GEGD webportal as string
+user_name = "CAC_NUMBER" # Enter User Name here ie your CAC number as string
+password = "PASSWORD" # Enter Password here as string
+
+
+def aoi_info(xmin, ymin, xmax, ymax, target_date):
+    # This function returns the date and perPixelY for the newest image given aoi above
+    # Default to get image info from first row and first colum pixel ~X and Y args~
+    # Calculate dimensions of aoi
+    # Finding out how many pixels you should request from their service
+    height = abs(ymax - ymin)
+    width = abs(xmax - xmin)
+    ratio = width / height
+    
+    # Calculate px dimensions rounding down to nearest integer px
+    px_height = int(100)
+    px_width = int(px_height * ratio)
+    
+    img_info = requests.get('https://evwhs.digitalglobe.com/mapservice/wmsaccess?connectid=' + 
+                            connect_id + '&SERVICE=WMS&REQUEST=GetFeatureInfo&version=1.1.1&SRS=EPSG:4326&BBOX=' +
+                            str(xmin) + ',' + str(ymin) + ',' + str(xmax) + ',' + str(ymax) +
+                            '&WIDTH=' + str(px_width) + '&HEIGHT=' + str(px_height) + '&COVERAGE_CQL_FILTER=acquisitionDate=%27'+str(target_date)+'%27'+
+                            '&QUERY_LAYERS=DigitalGlobe:ImageryFootprint&LAYERS=DigitalGlobe:ImageryFootprint&X=1&Y=1'+
+                            '&featureProfile=DefaultProfile&COVERAGE_CQL_FILTER=productType=%27Pan Sharpened Natural Color%27', 
+                            auth=requests.auth.HTTPBasicAuth(user_name, password))
+    img_info_parsed = img_info.text.split("\n")
+    
+    date = img_info_parsed[4].split(" = ")[1]
+    perPixelY = img_info_parsed[27].split(" = ")[1]
+    
+    return(date, perPixelY)
+
+def aoi_selector(xmin, ymin, xmax, ymax, target_date):
+    # Collect date and resolution info for aoi
+    info = aoi_info(xmin, ymin, xmax, ymax, target_date)
+    
+    # Calculate dimensions of aoi
+    height = abs(ymax - ymin)
+    width = abs(xmax - xmin)
+    ratio = width / height
+    
+    # Calculate px dimensions rounding down to nearest integer px
+    px_height = int(height / abs(float(info[1]))) # grabs perpixely from info (object 1 is 2nd element: python counts 0,1,...)
+    px_width = int(px_height * ratio)
+    
+    # perPixelY allows us to calc the lat/long of each pixel --> will allow us to calc lat/long position for each vessel
+
+    r = requests.get('https://evwhs.digitalglobe.com/mapservice/wmsaccess?connectid=' + 
+                     connect_id + '&SERVICE=WMS&REQUEST=GetMap&version=1.1.1&SRS=EPSG:4326&BBOX=' + 
+                     str(xmin) + ',' + str(ymin) + ',' + str(xmax) + ',' + str(ymax) + 
+                     '&WIDTH=' + str(px_width) + '&HEIGHT=' + str(px_height) + '&COVERAGE_CQL_FILTER=acquisitionDate=%27'+str(target_date)+'%27'+
+                     '&LAYERS=DigitalGlobe:Imagery&format=image/jpeg' +
+                     '&featureProfile=DefaultProfile&COVERAGE_CQL_FILTER=productType=%27Pan Sharpened Natural Color%27', 
+                     auth=requests.auth.HTTPBasicAuth(user_name, password))
+    
+    # Return image content
+    return(r.content)
+
+# Test with Guam bounding box : use date 2021-05-30
+xmin = 13.37876
+xmax = 13.43854
+ymin = 144.74504
+ymax = 144.83345
+target_date = '5/30/2021'
+
+# returns image
+guam_training= aoi_selector(xmin, ymin, xmax, ymax, target_date)
+# saves image as jpg --> writes to a file
+with open(r'guam_training.jpg','wb') as f:
+    f.write(guam_training)
+
+
+######################################################################
+# Test with Seattle bounding box
+xmin = -122.357946
+xmax = -122.336031
+ymin = 47.599021
+ymax = 47.616337
+
+# returns image
+seattle_training = aoi_selector(xmin, ymin, xmax, ymax)
+
+# saves image as jpg --> writes to a file
+with open(r'seattle_training.jpg','wb') as f:
+    f.write(seattle_training)
