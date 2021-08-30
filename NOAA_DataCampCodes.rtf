@@ -1,0 +1,242 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf200
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red25\green189\blue44;\red0\green0\blue0;\red203\green203\blue202;
+\red23\green150\blue207;\red255\green255\blue255;\red212\green212\blue212;\red209\green51\blue120;\red213\green213\blue212;
+\red255\green255\blue255;\red255\green255\blue255;\red215\green215\blue211;\red25\green190\blue45;\red23\green23\blue23;
+\red202\green202\blue202;\red255\green255\blue255;\red212\green212\blue212;\red209\green51\blue120;\red214\green214\blue211;
+\red17\green136\blue207;\red202\green202\blue202;\red204\green204\blue202;}
+{\*\expandedcolortbl;;\cssrgb\c0\c76937\c22684;\cssrgb\c0\c0\c0;\cssrgb\c83320\c83320\c83112;
+\cssrgb\c4814\c65726\c84701;\cssrgb\c100000\c100000\c99971;\cssrgb\c86465\c86464\c86248;\cssrgb\c86335\c30206\c54364;\cssrgb\c86559\c86558\c86234;
+\cssrgb\c100000\c100000\c100000\c0;\cssrgb\c100000\c100000\c99926\c0;\cssrgb\c87205\c87200\c86116;\cssrgb\c0\c77255\c23137;\cssrgb\c11765\c11765\c11765;
+\cssrgb\c83137\c83137\c83137;\cssrgb\c100000\c100000\c100000;\cssrgb\c86275\c86275\c86275;\cssrgb\c86275\c30196\c54510;\cssrgb\c87114\c87110\c86135;
+\cssrgb\c0\c60784\c84706;\cssrgb\c83229\c83229\c83125;\cssrgb\c83770\c83767\c83038;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 From DataCamp\
+\
+TENSORFLOW: Image processing with Keras in Python Course\
+Importing Images as data\
+\
+\pard\pardeftab720\sl420\partightenfactor0
+
+\f1\fs32 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 # Import matplotlib\cf4 \cb3 \strokec4 \
+\pard\pardeftab720\sl420\partightenfactor0
+\cf5 \cb3 \strokec5 import\cf4 \cb3 \strokec4  \cf6 \cb3 \strokec6 matplotlib\cf4 \cb3 \strokec4 .\cf6 \cb3 \strokec6 pyplot\cf4 \cb3 \strokec4  \cf5 \cb3 \strokec5 as\cf4 \cb3 \strokec4  \cf6 \cb3 \strokec6 plt\cf4 \cb3 \strokec4 \
+\
+\pard\pardeftab720\sl420\partightenfactor0
+\cf2 \cb3 \strokec2 # Load the image\cf4 \cb3 \strokec4 \
+\pard\pardeftab720\sl420\partightenfactor0
+\cf6 \cb3 \strokec6 data\cf4 \cb3 \strokec4  = \cf6 \cb3 \strokec6 plt\cf4 \cb3 \strokec4 .\cf6 \cb3 \strokec6 imread\cf7 \cb3 \strokec7 (\cf8 \cb3 \strokec8 'bricks.png'\cf7 \cb3 \strokec7 )\cf4 \cb3 \strokec4 \
+\
+\pard\pardeftab720\sl420\partightenfactor0
+\cf2 \cb3 \strokec2 # Display the image\cf4 \cb3 \strokec4 \
+\pard\pardeftab720\sl420\partightenfactor0
+\cf6 \cb3 \strokec6 plt\cf4 \cb3 \strokec4 .\cf6 \cb3 \strokec6 imshow\cf7 \cb3 \strokec7 (\cf6 \cb3 \strokec6 data\cf7 \cb3 \strokec7 )\cf4 \cb3 \strokec4 \
+\cf6 \cb3 \strokec6 plt\cf4 \cb3 \strokec4 .\cf6 \cb3 \strokec6 show\cf7 \cb3 \strokec7 ()\
+\
+\pard\pardeftab720\sl420\partightenfactor0
+\cf9 \cb10 \strokec9 \
+\cf3 \cb11 \strokec12 Changing images (altering pixels)\
+\pard\pardeftab720\sl420\partightenfactor0
+\cf13 \cb14 \strokec13 # Set the red channel in this part of the image to 1\cf15 \cb1 \strokec15 \
+\cf16 \cb14 \strokec16 data\cf17 \strokec17 [\cf18 \strokec18 0\cf17 \strokec17 :\cf18 \strokec18 10\cf17 \strokec17 ,\cf18 \strokec18 0\cf17 \strokec17 :\cf18 \strokec18 10\cf17 \strokec17 ,\cf18 \strokec18 0\cf17 \strokec17 ]\cf15 \strokec15  = \cf18 \strokec18 1\cf15 \cb1 \strokec15 \
+\
+\cf13 \cb14 \strokec13 # Set the green channel in this part of the image to 0\cf15 \cb1 \strokec15 \
+\cf16 \cb14 \strokec16 data\cf17 \strokec17 [\cf18 \strokec18 0\cf17 \strokec17 :\cf18 \strokec18 10\cf17 \strokec17 ,\cf18 \strokec18 0\cf17 \strokec17 :\cf18 \strokec18 10\cf17 \strokec17 ,\cf18 \strokec18 1\cf17 \strokec17 ]\cf15 \strokec15  = \cf18 \strokec18 0\cf15 \cb1 \strokec15 \
+\
+\cf13 \cb14 \strokec13 # Set the blue channel in this part of the image to 0\cf15 \cb1 \strokec15 \
+\cf16 \cb14 \strokec16 data\cf17 \strokec17 [\cf18 \strokec18 0\cf17 \strokec17 :\cf18 \strokec18 10\cf17 \strokec17 ,\cf18 \strokec18 0\cf17 \strokec17 :\cf18 \strokec18 10\cf17 \strokec17 ,\cf18 \strokec18 2\cf17 \strokec17 ]\cf15 \strokec15  = \cf18 \strokec18 0\cf15 \cb1 \strokec15 \
+\
+\cf13 \cb14 \strokec13 # Visualize the result\cf15 \cb1 \strokec15 \
+\cf16 \cb14 \strokec16 plt\cf15 \strokec15 .\cf16 \strokec16 imshow\cf17 \strokec17 (\cf16 \strokec16 data\cf17 \strokec17 )\cf15 \cb1 \strokec15 \
+\cf16 \cb14 \strokec16 plt\cf15 \strokec15 .\cf16 \strokec16 show\cf17 \strokec17 ()\
+\cf3 \cb11 \strokec19 \
+Using one-hot encoding (classifying images)\
+\cf13 \cb14 \strokec13 # The number of image categories\cf15 \cb1 \strokec15 \
+\cf16 \cb14 \strokec16 n_categories\cf15 \strokec15  = \cf18 \strokec18 3\cf15 \cb1 \strokec15 \
+\
+\cf13 \cb14 \strokec13 # The unique values of categories in the data\cf15 \cb1 \strokec15 \
+\cf16 \cb14 \strokec16 categories\cf15 \strokec15  = \cf16 \strokec16 np\cf15 \strokec15 .\cf16 \strokec16 array\cf17 \strokec17 ([\cf18 \strokec18 "shirt"\cf17 \strokec17 ,\cf15 \strokec15  \cf18 \strokec18 "dress"\cf17 \strokec17 ,\cf15 \strokec15  \cf18 \strokec18 "shoe"\cf17 \strokec17 ])\cf15 \cb1 \strokec15 \
+\
+\cf13 \cb14 \strokec13 # Initialize ohe_labels as all zeros\cf15 \cb1 \strokec15 \
+\cf16 \cb14 \strokec16 ohe_labels\cf15 \strokec15  = \cf16 \strokec16 np\cf15 \strokec15 .\cf16 \strokec16 zeros\cf17 \strokec17 ((\cf20 \strokec20 len\cf17 \strokec17 (\cf16 \strokec16 labels\cf17 \strokec17 ),\cf15 \strokec15  \cf16 \strokec16 n_categories\cf17 \strokec17 ))\cf15 \cb1 \strokec15 \
+\
+\cf13 \cb14 \strokec13 # Loop over the labels\cf15 \cb1 \strokec15 \
+\pard\pardeftab720\sl420\partightenfactor0
+\cf20 \cb14 \strokec20 for\cf15 \strokec15  \cf16 \strokec16 ii\cf15 \strokec15  \cf20 \strokec20 in\cf15 \strokec15  \cf20 \strokec20 range\cf17 \strokec17 (\cf20 \strokec20 len\cf17 \strokec17 (\cf16 \strokec16 labels\cf17 \strokec17 )):\cf15 \cb1 \strokec15 \
+\pard\pardeftab720\sl420\partightenfactor0
+\cf15 \cb14     \cf13 \strokec13 # Find the location of this label in the categories variable\cf15 \cb1 \strokec15 \
+\cb14     \cf16 \strokec16 jj\cf15 \strokec15  = \cf16 \strokec16 np\cf15 \strokec15 .\cf16 \strokec16 where\cf17 \strokec17 (\cf16 \strokec16 categories\cf15 \strokec15  == \cf16 \strokec16 labels\cf17 \strokec17 [\cf16 \strokec16 ii\cf17 \strokec17 ])\cf15 \cb1 \strokec15 \
+\cb14     \cf13 \strokec13 # Set the corresponding zero to one\cf15 \cb1 \strokec15 \
+\cb14     \cf16 \strokec16 ohe_labels\cf17 \strokec17 [\cf16 \strokec16 ii\cf17 \strokec17 ,\cf16 \strokec16 jj\cf17 \strokec17 ]\cf15 \strokec15  = \cf18 \strokec18 1\cf15 \cb1 \strokec15 \
+\
+\cf3 \strokec21 Evaluating a classifier\
+\cf13 \cb14 \strokec13 # Calculate the number of correct predictions\cf15 \cb1 \strokec15 \
+\cf16 \cb14 \strokec16 number_correct\cf15 \strokec15  = \cf17 \strokec17 (\cf16 \strokec16 test_labels\cf15 \strokec15 *\cf16 \strokec16 predictions\cf17 \strokec17 )\cf15 \strokec15 .\cf20 \strokec20 sum\cf17 \strokec17 ()\cf15 \cb1 \strokec15 \
+\pard\pardeftab720\sl420\partightenfactor0
+\cf20 \cb14 \strokec20 print\cf17 \strokec17 (\cf16 \strokec16 number_correct\cf17 \strokec17 )\cf15 \cb1 \strokec15 \
+\
+\pard\pardeftab720\sl420\partightenfactor0
+\cf13 \cb14 \strokec13 # Calculate the proportion of correct predictions\cf15 \cb1 \strokec15 \
+\cf16 \cb14 \strokec16 proportion_correct\cf15 \strokec15  = \cf16 \strokec16 number_correct\cf15 \strokec15 /\cf20 \strokec20 len\cf17 \strokec17 (\cf16 \strokec16 predictions\cf17 \strokec17 )\cf15 \cb1 \strokec15 \
+\pard\pardeftab720\sl420\partightenfactor0
+\cf20 \cb14 \strokec20 print\cf17 \strokec17 (\cf16 \strokec16 proportion_correct\cf17 \strokec17 )\cf15 \cb1 \strokec15 \
+\pard\pardeftab720\sl420\partightenfactor0
+\cf3 \strokec21 \
+Building a neural network: classification with Keras\
+\cf13 \cb14 \strokec13 # Imports components from Keras\cf15 \cb1 \strokec15 \
+\pard\pardeftab720\sl420\partightenfactor0
+\cf20 \cb14 \strokec20 from\cf15 \strokec15  \cf16 \strokec16 keras\cf15 \strokec15 .\cf16 \strokec16 models\cf15 \strokec15  \cf20 \strokec20 import\cf15 \strokec15  \cf16 \strokec16 Sequential\cf15 \cb1 \strokec15 \
+\cf20 \cb14 \strokec20 from\cf15 \strokec15  \cf16 \strokec16 keras\cf15 \strokec15 .\cf16 \strokec16 layers\cf15 \strokec15  \cf20 \strokec20 import\cf15 \strokec15  \cf16 \strokec16 Dense\cf15 \cb1 \strokec15 \
+\
+\pard\pardeftab720\sl420\partightenfactor0
+\cf13 \cb14 \strokec13 # Initializes a sequential model\cf15 \cb1 \strokec15 \
+\cf16 \cb14 \strokec16 model\cf15 \strokec15  = \cf16 \strokec16 Sequential\cf17 \strokec17 ()\cf15 \cb1 \strokec15 \
+\
+\cf13 \cb14 \strokec13 # First layer\cf15 \cb1 \strokec15 \
+\cf16 \cb14 \strokec16 model\cf15 \strokec15 .\cf16 \strokec16 add\cf17 \strokec17 (\cf16 \strokec16 Dense\cf17 \strokec17 (\cf18 \strokec18 10\cf17 \strokec17 ,\cf15 \strokec15  \cf16 \strokec16 activation\cf15 \strokec15 =\cf18 \strokec18 'relu'\cf17 \strokec17 ,\cf15 \strokec15  \cf16 \strokec16 input_shape\cf15 \strokec15 =\cf17 \strokec17 (\cf18 \strokec18 784\cf17 \strokec17 ,)))\cf15 \cb1 \strokec15 \
+\
+\cf13 \cb14 \strokec13 # Second layer\cf15 \cb1 \strokec15 \
+\cf16 \cb14 \strokec16 model\cf15 \strokec15 .\cf16 \strokec16 add\cf17 \strokec17 (\cf16 \strokec16 Dense\cf17 \strokec17 (\cf18 \strokec18 10\cf17 \strokec17 ,\cf15 \strokec15  \cf16 \strokec16 activation\cf15 \strokec15 =\cf18 \strokec18 'relu'\cf17 \strokec17 ))\cf15 \cb1 \strokec15 \
+\
+\cf13 \cb14 \strokec13 # Output layer\cf15 \cb1 \strokec15 \
+\cf16 \cb14 \strokec16 model\cf15 \strokec15 .\cf16 \strokec16 add\cf17 \strokec17 (\cf16 \strokec16 Dense\cf17 \strokec17 (\cf18 \strokec18 3\cf17 \strokec17 ,\cf15 \strokec15  \cf16 \strokec16 activation\cf15 \strokec15 =\cf18 \strokec18 'softmax'\cf17 \strokec17 ))\cf15 \cb1 \strokec15 \
+\
+\cf3 \strokec21 Compile the model\
+\cf13 \cb14 \strokec13 # Compile the model\cf15 \cb1 \strokec15 \
+\cf16 \cb14 \strokec16 model\cf15 \strokec15 .\cf20 \strokec20 compile\cf17 \strokec17 (\cf16 \strokec16 optimizer\cf15 \strokec15 =\cf18 \strokec18 'adam'\cf17 \strokec17 ,\cf15 \strokec15  \cb1 \
+\cb14            \cf16 \strokec16 loss\cf15 \strokec15 =\cf18 \strokec18 'categorical_crossentropy'\cf17 \strokec17 ,\cf15 \strokec15  \cb1 \
+\cb14            \cf16 \strokec16 metrics\cf15 \strokec15 =\cf17 \strokec17 [\cf18 \strokec18 'accuracy'\cf17 \strokec17 ])\cf15 \cb1 \strokec15 \
+\cf3 \strokec21 \
+Fit a neural network to sample data (clothing example)\
+\cf13 \cb14 \strokec13 # Reshape the data to two-dimensional array\cf15 \cb1 \strokec15 \
+\cf16 \cb14 \strokec16 train_data\cf15 \strokec15  = \cf16 \strokec16 train_data\cf15 \strokec15 .\cf16 \strokec16 reshape\cf17 \strokec17 ((\cf18 \strokec18 50\cf17 \strokec17 ,\cf15 \strokec15  \cf18 \strokec18 784\cf17 \strokec17 ))\cf15 \cb1 \strokec15 \
+\
+\cf13 \cb14 \strokec13 # Fit the model\cf15 \cb1 \strokec15 \
+\cf16 \cb14 \strokec16 model\cf15 \strokec15 .\cf16 \strokec16 fit\cf17 \strokec17 (\cf16 \strokec16 train_data\cf17 \strokec17 ,\cf15 \strokec15  \cf16 \strokec16 train_labels\cf17 \strokec17 ,\cf15 \strokec15  \cf16 \strokec16 validation_split\cf15 \strokec15 =\cf18 \strokec18 0.2\cf17 \strokec17 ,\cf15 \strokec15  \cf16 \strokec16 epochs\cf15 \strokec15 =\cf18 \strokec18 3\cf17 \strokec17 )\cf15 \cb1 \strokec15 \
+\
+\cf3 \strokec21 Cross-validation for neural network evaluation\
+\cf13 \cb14 \strokec13 # Reshape test data\cf15 \cb1 \strokec15 \
+\cf16 \cb14 \strokec16 test_data\cf15 \strokec15  = \cf16 \strokec16 test_data\cf15 \strokec15 .\cf16 \strokec16 reshape\cf17 \strokec17 ((\cf18 \strokec18 10\cf17 \strokec17 ,\cf15 \strokec15  \cf18 \strokec18 784\cf17 \strokec17 ))\cf15 \cb1 \strokec15 \
+\
+\cf13 \cb14 \strokec13 # Evaluate the model\cf15 \cb1 \strokec15 \
+\cf16 \cb14 \strokec16 model\cf15 \strokec15 .\cf16 \strokec16 evaluate\cf17 \strokec17 (\cf16 \strokec16 test_data\cf17 \strokec17 ,\cf15 \strokec15  \cf16 \strokec16 test_labels\cf17 \strokec17 )\cf15 \cb1 \strokec15 \
+\
+\pard\pardeftab720\sl420\partightenfactor0
+\cf3 \cb10 \strokec22 Convolutions with Keras\
+\pard\pardeftab720\sl420\partightenfactor0
+\cf16 \cb14 \strokec16 array\cf15 \strokec15  = \cf16 \strokec16 np\cf15 \strokec15 .\cf16 \strokec16 array\cf17 \strokec17 ([\cf18 \strokec18 1\cf17 \strokec17 ,\cf15 \strokec15  \cf18 \strokec18 0\cf17 \strokec17 ,\cf15 \strokec15  \cf18 \strokec18 1\cf17 \strokec17 ,\cf15 \strokec15  \cf18 \strokec18 0\cf17 \strokec17 ,\cf15 \strokec15  \cf18 \strokec18 1\cf17 \strokec17 ,\cf15 \strokec15  \cf18 \strokec18 0\cf17 \strokec17 ,\cf15 \strokec15  \cf18 \strokec18 1\cf17 \strokec17 ,\cf15 \strokec15  \cf18 \strokec18 0\cf17 \strokec17 ,\cf15 \strokec15  \cf18 \strokec18 1\cf17 \strokec17 ,\cf15 \strokec15  \cf18 \strokec18 0\cf17 \strokec17 ])\cf15 \cb1 \strokec15 \
+\cf16 \cb14 \strokec16 kernel\cf15 \strokec15  = \cf16 \strokec16 np\cf15 \strokec15 .\cf16 \strokec16 array\cf17 \strokec17 ([\cf18 \strokec18 1\cf17 \strokec17 ,\cf15 \strokec15  \cf18 \strokec18 -1\cf17 \strokec17 ,\cf15 \strokec15  \cf18 \strokec18 0\cf17 \strokec17 ])\cf15 \cb1 \strokec15 \
+\cf16 \cb14 \strokec16 conv\cf15 \strokec15  = \cf16 \strokec16 np\cf15 \strokec15 .\cf16 \strokec16 array\cf17 \strokec17 ([\cf18 \strokec18 0\cf17 \strokec17 ,\cf15 \strokec15  \cf18 \strokec18 0\cf17 \strokec17 ,\cf15 \strokec15  \cf18 \strokec18 0\cf17 \strokec17 ,\cf15 \strokec15  \cf18 \strokec18 0\cf17 \strokec17 ,\cf15 \strokec15  \cf18 \strokec18 0\cf17 \strokec17 ,\cf15 \strokec15  \cf18 \strokec18 0\cf17 \strokec17 ,\cf15 \strokec15  \cf18 \strokec18 0\cf17 \strokec17 ,\cf15 \strokec15  \cf18 \strokec18 0\cf17 \strokec17 ,\cf15 \strokec15  \cf18 \strokec18 0\cf17 \strokec17 ,\cf15 \strokec15  \cf18 \strokec18 0\cf17 \strokec17 ])\cf15 \cb1 \strokec15 \
+\
+\cf13 \cb14 \strokec13 # Output array\cf15 \cb1 \strokec15 \
+\pard\pardeftab720\sl420\partightenfactor0
+\cf20 \cb14 \strokec20 for\cf15 \strokec15  \cf16 \strokec16 ii\cf15 \strokec15  \cf20 \strokec20 in\cf15 \strokec15  \cf20 \strokec20 range\cf17 \strokec17 (\cf18 \strokec18 8\cf17 \strokec17 ):\cf15 \cb1 \strokec15 \
+\pard\pardeftab720\sl420\partightenfactor0
+\cf15 \cb14     \cf16 \strokec16 conv\cf17 \strokec17 [\cf16 \strokec16 ii\cf17 \strokec17 ]\cf15 \strokec15  = \cf17 \strokec17 (\cf16 \strokec16 kernel\cf15 \strokec15  * \cf16 \strokec16 array\cf17 \strokec17 [\cf16 \strokec16 ii\cf17 \strokec17 :\cf16 \strokec16 ii\cf15 \strokec15 +\cf18 \strokec18 3\cf17 \strokec17 ])\cf15 \strokec15 .\cf20 \strokec20 sum\cf17 \strokec17 ()\cf15 \cb1 \strokec15 \
+\
+\cf13 \cb14 \strokec13 # Print conv\cf15 \cb1 \strokec15 \
+\pard\pardeftab720\sl420\partightenfactor0
+\cf20 \cb14 \strokec20 print\cf17 \strokec17 (\cf16 \strokec16 conv\cf17 \strokec17 )\cf15 \cb1 \strokec15 \
+\pard\pardeftab720\sl420\partightenfactor0
+\cf21 \cb10 \strokec21 \
+\cf3 \cb10 \strokec22 Image convolutions\
+\pard\pardeftab720\sl420\partightenfactor0
+\cf16 \cb14 \strokec16 kernel\cf15 \strokec15  = \cf16 \strokec16 np\cf15 \strokec15 .\cf16 \strokec16 array\cf17 \strokec17 ([[\cf18 \strokec18 0\cf17 \strokec17 ,\cf15 \strokec15  \cf18 \strokec18 1\cf17 \strokec17 ,\cf15 \strokec15  \cf18 \strokec18 0\cf17 \strokec17 ],\cf15 \strokec15  \cf17 \strokec17 [\cf18 \strokec18 1\cf17 \strokec17 ,\cf15 \strokec15  \cf18 \strokec18 1\cf17 \strokec17 ,\cf15 \strokec15  \cf18 \strokec18 1\cf17 \strokec17 ],\cf15 \strokec15  \cf17 \strokec17 [\cf18 \strokec18 0\cf17 \strokec17 ,\cf15 \strokec15  \cf18 \strokec18 1\cf17 \strokec17 ,\cf15 \strokec15  \cf18 \strokec18 0\cf17 \strokec17 ]])\cf15 \cb1 \strokec15 \
+\cf16 \cb14 \strokec16 result\cf15 \strokec15  = \cf16 \strokec16 np\cf15 \strokec15 .\cf16 \strokec16 zeros\cf17 \strokec17 (\cf16 \strokec16 im\cf15 \strokec15 .\cf16 \strokec16 shape\cf17 \strokec17 )\cf15 \cb1 \strokec15 \
+\
+\pard\pardeftab720\sl420\partightenfactor0
+\cf13 \cb14 \strokec13 # Output array\cf15 \cb1 \strokec15 \
+\pard\pardeftab720\sl420\partightenfactor0
+\cf20 \cb14 \strokec20 for\cf15 \strokec15  \cf16 \strokec16 ii\cf15 \strokec15  \cf20 \strokec20 in\cf15 \strokec15  \cf20 \strokec20 range\cf17 \strokec17 (\cf16 \strokec16 im\cf15 \strokec15 .\cf16 \strokec16 shape\cf17 \strokec17 [\cf18 \strokec18 0\cf17 \strokec17 ]\cf15 \strokec15  - \cf18 \strokec18 3\cf17 \strokec17 ):\cf15 \cb1 \strokec15 \
+\pard\pardeftab720\sl420\partightenfactor0
+\cf15 \cb14     \cf20 \strokec20 for\cf15 \strokec15  \cf16 \strokec16 jj\cf15 \strokec15  \cf20 \strokec20 in\cf15 \strokec15  \cf20 \strokec20 range\cf17 \strokec17 (\cf16 \strokec16 im\cf15 \strokec15 .\cf16 \strokec16 shape\cf17 \strokec17 [\cf18 \strokec18 1\cf17 \strokec17 ]\cf15 \strokec15  - \cf18 \strokec18 3\cf17 \strokec17 ):\cf15 \cb1 \strokec15 \
+\cb14         \cf16 \strokec16 result\cf17 \strokec17 [\cf16 \strokec16 ii\cf17 \strokec17 ,\cf15 \strokec15  \cf16 \strokec16 jj\cf17 \strokec17 ]\cf15 \strokec15  = \cf17 \strokec17 (\cf16 \strokec16 im\cf17 \strokec17 [\cf16 \strokec16 ii\cf17 \strokec17 :\cf16 \strokec16 ii\cf15 \strokec15 +\cf18 \strokec18 3\cf17 \strokec17 ,\cf15 \strokec15  \cf16 \strokec16 jj\cf17 \strokec17 :\cf16 \strokec16 jj\cf15 \strokec15 +\cf18 \strokec18 3\cf17 \strokec17 ]\cf15 \strokec15  * \cf16 \strokec16 kernel\cf17 \strokec17 )\cf15 \strokec15 .\cf20 \strokec20 sum\cf17 \strokec17 ()\cf15 \cb1 \strokec15 \
+\
+\pard\pardeftab720\sl420\partightenfactor0
+\cf13 \cb14 \strokec13 # Print result\cf15 \cb1 \strokec15 \
+\pard\pardeftab720\sl420\partightenfactor0
+\cf20 \cb14 \strokec20 print\cf17 \strokec17 (\cf16 \strokec16 result\cf17 \strokec17 )\cf15 \cb1 \strokec15 \
+\
+\pard\pardeftab720\sl420\partightenfactor0
+\cf3 \strokec21 Defining image convolution kernels (creating one to find horizontal lines in image)\
+\pard\pardeftab720\sl420\partightenfactor0
+\cf16 \cb14 \strokec16 kernel\cf15 \strokec15  = \cf16 \strokec16 np\cf15 \strokec15 .\cf16 \strokec16 array\cf17 \strokec17 ([[\cf18 \strokec18 -1\cf17 \strokec17 ,\cf15 \strokec15  \cf18 \strokec18 -1\cf17 \strokec17 ,\cf15 \strokec15  \cf18 \strokec18 -1\cf17 \strokec17 ],\cf15 \strokec15  \cb1 \
+\pard\pardeftab720\sl420\partightenfactor0
+\cf15 \cb14                    \cf17 \strokec17 [\cf18 \strokec18 1\cf17 \strokec17 ,\cf15 \strokec15  \cf18 \strokec18 1\cf17 \strokec17 ,\cf15 \strokec15  \cf18 \strokec18 1\cf17 \strokec17 ],\cf15 \cb1 \strokec15 \
+\cb14                    \cf17 \strokec17 [\cf18 \strokec18 -1\cf17 \strokec17 ,\cf15 \strokec15  \cf18 \strokec18 -1\cf17 \strokec17 ,\cf15 \strokec15  \cf18 \strokec18 -1\cf17 \strokec17 ]])\cf15 \cb1 \strokec15 \
+\
+\pard\pardeftab720\sl420\partightenfactor0
+\cf3 \strokec21 Convolutional network for image classification\
+\pard\pardeftab720\sl420\partightenfactor0
+\cf13 \cb14 \strokec13 # Import the necessary components from Keras\cf15 \cb1 \strokec15 \
+\pard\pardeftab720\sl420\partightenfactor0
+\cf20 \cb14 \strokec20 from\cf15 \strokec15  \cf16 \strokec16 keras\cf15 \strokec15 .\cf16 \strokec16 models\cf15 \strokec15  \cf20 \strokec20 import\cf15 \strokec15  \cf16 \strokec16 Sequential\cf15 \cb1 \strokec15 \
+\cf20 \cb14 \strokec20 from\cf15 \strokec15  \cf16 \strokec16 keras\cf15 \strokec15 .\cf16 \strokec16 layers\cf15 \strokec15  \cf20 \strokec20 import\cf15 \strokec15  \cf16 \strokec16 Dense\cf17 \strokec17 ,\cf15 \strokec15  \cf16 \strokec16 Conv2D\cf17 \strokec17 ,\cf15 \strokec15  \cf16 \strokec16 Flatten\cf15 \cb1 \strokec15 \
+\
+\pard\pardeftab720\sl420\partightenfactor0
+\cf13 \cb14 \strokec13 # Initialize the model object\cf15 \cb1 \strokec15 \
+\cf16 \cb14 \strokec16 model\cf15 \strokec15  = \cf16 \strokec16 Sequential\cf17 \strokec17 ()\cf15 \cb1 \strokec15 \
+\
+\cf13 \cb14 \strokec13 # Add a convolutional layer\cf15 \cb1 \strokec15 \
+\cf16 \cb14 \strokec16 model\cf15 \strokec15 .\cf16 \strokec16 add\cf17 \strokec17 (\cf16 \strokec16 Conv2D\cf17 \strokec17 (\cf18 \strokec18 10\cf17 \strokec17 ,\cf15 \strokec15  \cf16 \strokec16 kernel_size\cf15 \strokec15 =\cf18 \strokec18 3\cf17 \strokec17 ,\cf15 \strokec15  \cf16 \strokec16 activation\cf15 \strokec15 =\cf18 \strokec18 'relu'\cf17 \strokec17 ,\cf15 \strokec15  \cb1 \
+\cb14                \cf16 \strokec16 input_shape\cf15 \strokec15 =\cf17 \strokec17 (\cf16 \strokec16 img_rows\cf17 \strokec17 ,\cf15 \strokec15  \cf16 \strokec16 img_cols\cf17 \strokec17 ,\cf15 \strokec15  \cf18 \strokec18 1\cf17 \strokec17 )))\cf15 \cb1 \strokec15 \
+\
+\cf13 \cb14 \strokec13 # Flatten the output of the convolutional layer\cf15 \cb1 \strokec15 \
+\cf16 \cb14 \strokec16 model\cf15 \strokec15 .\cf16 \strokec16 add\cf17 \strokec17 (\cf16 \strokec16 Flatten\cf17 \strokec17 ())\cf15 \cb1 \strokec15 \
+\cf13 \cb14 \strokec13 # Add an output layer for the 3 categories\cf15 \cb1 \strokec15 \
+\cf16 \cb14 \strokec16 model\cf15 \strokec15 .\cf16 \strokec16 add\cf17 \strokec17 (\cf16 \strokec16 Dense\cf17 \strokec17 (\cf18 \strokec18 3\cf17 \strokec17 ,\cf15 \strokec15  \cf16 \strokec16 activation\cf15 \strokec15 =\cf18 \strokec18 'softmax'\cf17 \strokec17 ))\cf15 \cb1 \strokec15 \
+\pard\pardeftab720\sl420\partightenfactor0
+\cf15 \
+\cf3 \strokec21 Train model to classify image types (clothing ex)\
+\pard\pardeftab720\sl420\partightenfactor0
+\cf13 \cb14 \strokec13 # Compile the model \cf15 \cb1 \strokec15 \
+\cf16 \cb14 \strokec16 model\cf15 \strokec15 .\cf20 \strokec20 compile\cf17 \strokec17 (\cf16 \strokec16 optimizer\cf15 \strokec15 =\cf18 \strokec18 'adam'\cf17 \strokec17 ,\cf15 \strokec15  \cb1 \
+\cb14               \cf16 \strokec16 loss\cf15 \strokec15 =\cf18 \strokec18 'categorical_crossentropy'\cf17 \strokec17 ,\cf15 \strokec15  \cb1 \
+\cb14               \cf16 \strokec16 metrics\cf15 \strokec15 =\cf17 \strokec17 [\cf18 \strokec18 'accuracy'\cf17 \strokec17 ])\cf15 \cb1 \strokec15 \
+\
+\cf13 \cb14 \strokec13 # Fit the model on a training set\cf15 \cb1 \strokec15 \
+\cf16 \cb14 \strokec16 model\cf15 \strokec15 .\cf16 \strokec16 fit\cf17 \strokec17 (\cf16 \strokec16 train_data\cf17 \strokec17 ,\cf15 \strokec15  \cf16 \strokec16 train_labels\cf17 \strokec17 ,\cf15 \strokec15  \cb1 \
+\cb14           \cf16 \strokec16 validation_split\cf15 \strokec15 =\cf18 \strokec18 0.2\cf17 \strokec17 ,\cf15 \strokec15  \cb1 \
+\cb14           \cf16 \strokec16 epochs\cf15 \strokec15 =\cf18 \strokec18 3\cf17 \strokec17 ,\cf15 \strokec15  \cf16 \strokec16 batch_size\cf15 \strokec15 =\cf18 \strokec18 10\cf17 \strokec17 )\cf15 \cb1 \strokec15 \
+\pard\pardeftab720\sl420\partightenfactor0
+\cf15 \
+\pard\pardeftab720\sl420\partightenfactor0
+\cf13 \cb14 \strokec13 # Evaluate the model on separate test data\cf15 \cb1 \strokec15 \
+\cf16 \cb14 \strokec16 model\cf15 \strokec15 .\cf16 \strokec16 evaluate\cf17 \strokec17 (\cf16 \strokec16 test_data\cf17 \strokec17 ,\cf15 \strokec15  \cf16 \strokec16 test_labels\cf17 \strokec17 ,\cf15 \strokec15  \cf16 \strokec16 batch_size\cf15 \strokec15 =\cf18 \strokec18 10\cf15 \strokec15  \cf17 \strokec17 )\cf15 \cb1 \strokec15 \
+\pard\pardeftab720\sl420\partightenfactor0
+\cf15 \
+\cf3 \strokec21 Adding padding to a CNN\
+\pard\pardeftab720\sl420\partightenfactor0
+\cf13 \cb14 \strokec13 # Initialize the model\cf15 \cb1 \strokec15 \
+\cf16 \cb14 \strokec16 model\cf15 \strokec15  = \cf16 \strokec16 Sequential\cf17 \strokec17 ()\cf15 \cb1 \strokec15 \
+\
+\cf13 \cb14 \strokec13 # Add the convolutional layer\cf15 \cb1 \strokec15 \
+\cf16 \cb14 \strokec16 model\cf15 \strokec15 .\cf16 \strokec16 add\cf17 \strokec17 (\cf16 \strokec16 Conv2D\cf17 \strokec17 (\cf18 \strokec18 10\cf17 \strokec17 ,\cf15 \strokec15  \cf16 \strokec16 kernel_size\cf15 \strokec15 =\cf18 \strokec18 3\cf17 \strokec17 ,\cf15 \strokec15  \cf16 \strokec16 activation\cf15 \strokec15 =\cf18 \strokec18 'relu'\cf17 \strokec17 ,\cf15 \strokec15  \cb1 \
+\cb14                  \cf16 \strokec16 input_shape\cf15 \strokec15 =\cf17 \strokec17 (\cf16 \strokec16 img_rows\cf17 \strokec17 ,\cf15 \strokec15  \cf16 \strokec16 img_cols\cf17 \strokec17 ,\cf15 \strokec15  \cf18 \strokec18 1\cf17 \strokec17 ),\cf15 \strokec15  \cb1 \
+\cb14                  \cf16 \strokec16 padding\cf15 \strokec15 =\cf18 \strokec18 'same'\cf17 \strokec17 ))\cf15 \cb1 \strokec15 \
+\
+\cf13 \cb14 \strokec13 # Feed into output layer\cf15 \cb1 \strokec15 \
+\cf16 \cb14 \strokec16 model\cf15 \strokec15 .\cf16 \strokec16 add\cf17 \strokec17 (\cf16 \strokec16 Flatten\cf17 \strokec17 ())\cf15 \cb1 \strokec15 \
+\cf16 \cb14 \strokec16 model\cf15 \strokec15 .\cf16 \strokec16 add\cf17 \strokec17 (\cf16 \strokec16 Dense\cf17 \strokec17 (\cf18 \strokec18 3\cf17 \strokec17 ,\cf15 \strokec15  \cf16 \strokec16 activation\cf15 \strokec15 =\cf18 \strokec18 'softmax'\cf17 \strokec17 ))\cf15 \cb1 \strokec15 \
+\pard\pardeftab720\sl420\partightenfactor0
+\cf15 \
+\cf3 \strokec21 Add strides to CNN\
+\pard\pardeftab720\sl420\partightenfactor0
+\cf13 \cb14 \strokec13 # Initialize the model\cf15 \cb1 \strokec15 \
+\cf16 \cb14 \strokec16 model\cf15 \strokec15  = \cf16 \strokec16 Sequential\cf17 \strokec17 ()\cf15 \cb1 \strokec15 \
+\
+\cf13 \cb14 \strokec13 # Add the convolutional layer\cf15 \cb1 \strokec15 \
+\cf16 \cb14 \strokec16 model\cf15 \strokec15 .\cf16 \strokec16 add\cf17 \strokec17 (\cf16 \strokec16 Conv2D\cf17 \strokec17 (\cf18 \strokec18 10\cf17 \strokec17 ,\cf15 \strokec15  \cf16 \strokec16 kernel_size\cf15 \strokec15 =\cf18 \strokec18 3\cf17 \strokec17 ,\cf15 \strokec15  \cf16 \strokec16 activation\cf15 \strokec15 =\cf18 \strokec18 'relu'\cf17 \strokec17 ,\cf15 \strokec15  \cb1 \
+\cb14               \cf16 \strokec16 input_shape\cf15 \strokec15 =\cf17 \strokec17 (\cf16 \strokec16 img_rows\cf17 \strokec17 ,\cf15 \strokec15  \cf16 \strokec16 img_cols\cf17 \strokec17 ,\cf15 \strokec15  \cf18 \strokec18 1\cf17 \strokec17 ),\cf15 \strokec15  \cb1 \
+\cb14               \cf16 \strokec16 strides\cf15 \strokec15 =\cf18 \strokec18 2\cf17 \strokec17 ))\cf15 \cb1 \strokec15 \
+\
+\cf13 \cb14 \strokec13 # Feed into output layer\cf15 \cb1 \strokec15 \
+\cf16 \cb14 \strokec16 model\cf15 \strokec15 .\cf16 \strokec16 add\cf17 \strokec17 (\cf16 \strokec16 Flatten\cf17 \strokec17 ())\cf15 \cb1 \strokec15 \
+\cf16 \cb14 \strokec16 model\cf15 \strokec15 .\cf16 \strokec16 add\cf17 \strokec17 (\cf16 \strokec16 Dense\cf17 \strokec17 (\cf18 \strokec18 3\cf17 \strokec17 ,\cf15 \strokec15  \cf16 \strokec16 activation\cf15 \strokec15 =\cf18 \strokec18 'softmax'\cf17 \strokec17 ))\cf15 \cb1 \strokec15 \
+\pard\pardeftab720\sl420\partightenfactor0
+\cf15 \
+\
+}
